@@ -8,7 +8,7 @@ import torch
 from torch.backends import cudnn
 
 
-sys.path.append('../reid_strong_baseline/')
+sys.path.append('reid_strong_baseline/')
 from config import cfg
 from data import make_data_loader
 from data.transforms.build import build_transforms
@@ -23,8 +23,8 @@ torch.set_grad_enabled(True)
 
 class VisualComponent:
     def __init__(self, \
-                 cfg_vrai_fp='../reid_strong_baseline/configs/softmax_triplet_with_center_vrai.yml', \
-                 cfg_kpneuma_fp='../reid_strong_baseline/configs/softmax_triplet_with_center_kpneuma.yml'):
+                 cfg_vrai_fp='configs/softmax_triplet_with_center_vrai.yml', \
+                 cfg_kpneuma_fp='configs/softmax_triplet_with_center_kpneuma.yml'):
         print("[INFO] Visual Component Initialization")
         self.cfg_vrai_fp = cfg_vrai_fp
         self.cfg_kpneuma_fp = cfg_kpneuma_fp
@@ -112,7 +112,7 @@ class VisualComponent:
         print("[INFO] VRAI Best Epoch: %d with method %s" % (vrai_ep, method))
 
         cfg.merge_from_file(self.cfg_kpneuma_fp)
-        cfg.merge_from_list(['DATASETS.ROOT_DIR', "('../data')", \
+        cfg.merge_from_list(['DATASETS.ROOT_DIR', "('data')", \
                             'MODEL.PRETRAIN_PATH', "('%s')" % vrai_model_fp])
         cfg.freeze()
     

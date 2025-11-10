@@ -10,15 +10,15 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-sys.path.append('../time-prediction/')
+sys.path.append('time-prediction/')
 from src.DataManager import DataManager
 from src.time_models import LSTM, GRU, Transformer
 
 
 class TemporalComponent:
     def __init__(self, 
-                 checkpoint_dir = "../saved_models/temporal/",
-                 data_path = "../data/KPNEUMA/",
+                 checkpoint_dir = "saved_models/temporal/",
+                 data_path = "data/KPNEUMA/",
                  batch_size=512,
                  nepoch=2000,
                  train=False) -> None:

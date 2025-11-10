@@ -1,8 +1,7 @@
-# %%
 import argparse
 import sys
 
-from TemporalComponent import TemporalComponent
+from framework.TemporalComponent import TemporalComponent
 
 
 # CLI command
@@ -18,9 +17,7 @@ def main():
     return
 
 
-# %%
 if __name__ == "__main__":
-    sys.argv = [''] #To run this script in jupyter notebook using the default arguments
+    #sys.argv = [''] #To run this script in jupyter notebook using the default arguments
     main()
 
-# %%

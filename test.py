@@ -1,4 +1,4 @@
-from VReID import VReID
+from framework.VReID import VReID
 
 reid = VReID()
 

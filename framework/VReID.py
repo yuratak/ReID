@@ -6,10 +6,10 @@ import os
 import torch
 from tqdm import tqdm
 
-import util
+from . import util
 
-from VisualComponent import VisualComponent
-from TemporalComponent import TemporalComponent
+from .VisualComponent import VisualComponent
+from .TemporalComponent import TemporalComponent
 
 class VReID:
     def __init__(self):

@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-from VisualComponent import VisualComponent
+from framework.VisualComponent import VisualComponent
 
 
 # CLI command
@@ -20,7 +20,6 @@ def main():
 
     return
 
-# %%
 if __name__ == "__main__":
     # Uncomoment it when the you are running the script from the terminal
     #sys.argv = ['--VRAI_train'] #To run this script in jupyter notebook using the default arguments

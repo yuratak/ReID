@@ -4,7 +4,7 @@ _Official code and resources for the paper:_
 
 > **"Deep Learning for Vehicle Re-identification in Urban Traffic Monitoring With Visual and Temporal Information"**  
 > Yura Tak, Robert Fonod, Nikolas Geroliminis <br>
-> Under revision for **Communications in Transportation Research**
+> Accepted in **Communications in Transportation Research**
 
 [//]: # "> Published in **Communicationsin Transporatation Systems**, 2025"
 [//]: # "> [📄 PDF](https://infoscience.epfl.ch/entities/publication/a3e71482-1f77-4d10-ad68-556a0d90fa98)  • [🔗 DOI](https://doi.org/10.1109/TITS.2024.3397588)"
@@ -34,12 +34,11 @@ cd ReID
 
 ### 2. Install dependencies
 ```bash
-conda create -y -n ReID python==3.7 numpy pandas matplotlib
+conda create -y -n ReID python==3.7.15 numpy pandas matplotlib
 conda activate ReID
 conda install pytorch torchvision torchaudio pytorch-cuda -c pytorch -c nvidia
-conda install -c conda-forge ignite scikit-learn
-conda install ignite==0.1.2
-pip install yacs opencv-python geopandas optuna geopy gdown
+conda install -c conda-forge ignite==0.1.2 scikit-learn
+pip install yacs opencv-python geopandas optuna geopy tqdm gdown
 ```
 
 ### 3 Dataset
@@ -162,11 +161,10 @@ tar -xvzf saved_models.tar.gz
 
 <pre>
 ReID/
-├─ framework/
-  ├── test.py
-  ├── result.ipynb
-  ├── train_visual_component.py
-  └── train_temporal_component.py
+├── test.py
+├── result.ipynb
+├── train_visual_component.py
+└── train_temporal_component.py
 </pre>
 
 ### Evaluate with pretrained model
@@ -174,11 +172,10 @@ ReID/
 #### Proposed Framework
 
 ```bash
-cd framework
 python test.py
 ```
 
-`framework/result.ipynb` provides the code to reproduce the main figures from the paper.
+`result.ipynb` provides the code to reproduce the main figures from the paper.
 
 
 ### Train Visual Component
@@ -201,9 +198,9 @@ python train_temporal_component.py
 
 | Method   |    mAP   |   CMC-1  |   CMC-5  |
 |----------|----------|----------|----------|
-| Baseline | 0.879    | 0.916    | 0.957    |
-|Vanilla PL| 0.883    | 0.917    | 0.953    |
-| **Ours** | **0.902**| **0.934**| **0.968**|
+| Visual Component (Baseline) | 0.769    | 0.669    | 0.896    |
+|Temporal Component| 0.263    | 0.125    | 0.420    |
+| **Proposed Framework (Ours)** | **0.949**| **0.915**| **0.984**|
 
 See the paper for more detailed results and visualizations.
 
@@ -225,3 +222,10 @@ For questions, feedback, please open an issue on this repository or contact the 
 
 ---
 
+## Acknowledgment
+
+The directory **reid_strong_baseline** corresponds to a third-party library.  
+The original implementation is available at: https://github.com/michuanhaohao/reid-strong-baseline.git.  
+All credit for the code inside that directory goes entirely to the authors of the original repository.
+
+In this project, that directory is included as an unmodified copy of the framework, with the exception of adding a custom dataset for our drone-based experiments. All other parts of this repository are our own work.
