@@ -1,24 +1,23 @@
-#The config parameters are overwritten by the command line argument parameters
 MODEL:
+  DEVICE: 'cuda'
   DEVICE_ID: ('0')
-  PRETRAIN_CHOICE: 'imagenet'
-  PRETRAIN_PATH: '../reid_strong_baseline/resnet_pretrained.pth'
-  METRIC_LOSS_TYPE: 'triplet'
-  IF_LABELSMOOTH: 'no' # YT : 'on'
-  IF_WITH_CENTER: 'no' #YT : 'yes'
-  FREEZE: 0.2
+  PRETRAIN_CHOICE: 'self'
+  METRIC_LOSS_TYPE: 'triplet_center'
+  IF_LABELSMOOTH: 'on'
+  IF_WITH_CENTER: 'yes'
+  FREEZE: 0.9
 
 
 INPUT:
   SIZE_TRAIN: [256, 128]
   SIZE_TEST: [256, 128]
-  PROB: 0.5 # random horizontal flip
-  RE_PROB: 0.5 # random erasing
+  PROB: 0.5
+  RE_PROB: 0.5
   PADDING: 10
 
 DATASETS:
-  NAMES: 'vrai' # ('vrai')
-  ROOT_DIR: '../data'
+  NAMES: ('kpneuma')
+  ROOT_DIR: 'data/'
 
 DATALOADER:
   SAMPLER: 'softmax_triplet'
@@ -27,7 +26,7 @@ DATALOADER:
 
 SOLVER:
   OPTIMIZER_NAME: 'Adam'
-  MAX_EPOCHS: 120
+  MAX_EPOCHS: 40
   BASE_LR: 0.00035
 
   CLUSTER_MARGIN: 0.3
@@ -53,16 +52,16 @@ SOLVER:
   WARMUP_ITERS: 10
   WARMUP_METHOD: 'linear'
 
-  CHECKPOINT_PERIOD: 40 #1
+  CHECKPOINT_PERIOD: 40 # 1
   LOG_PERIOD: 20
   EVAL_PERIOD: 40 # 1
 
 TEST:
   IMS_PER_BATCH: 128
   RE_RANKING: 'no'
-  WEIGHT: "path"
+  WEIGHT: "saved_models/visual/KPNEUMA/resnet50_model_40.pth"
   NECK_FEAT: 'after'
   FEAT_NORM: 'yes'
 
-OUTPUT_DIR: "../saved_models/visual/VRAI/"
+OUTPUT_DIR: "saved_models/visual/KPNEUMA/"
 

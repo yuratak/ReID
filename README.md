@@ -222,10 +222,12 @@ For questions, feedback, please open an issue on this repository or contact the 
 
 ---
 
-## Acknowledgment
+## 🤝 Acknowledgment
 
 The directory **reid_strong_baseline** corresponds to a third-party library.  
 The original implementation is available at: https://github.com/michuanhaohao/reid-strong-baseline.git.  
 All credit for the code inside that directory goes entirely to the authors of the original repository.
 
 In this project, that directory is included as an unmodified copy of the framework, with the exception of adding a custom dataset for our drone-based experiments. All other parts of this repository are our own work.
+
+---
